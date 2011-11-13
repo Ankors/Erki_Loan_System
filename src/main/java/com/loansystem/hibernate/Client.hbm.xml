@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 13, 2011 9:49:22 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+  <class name="Client" table="client">
+    <id name="clientId" type="int">
+      <column name="client_id"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="CientGroup" fetch="select" name="cientGroup">
+      <column length="2000000000" name="client_group_id" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="com.loansystem.model.ClientStatus" fetch="select" name="clientStatus">
+      <column length="2000000000" name="status_id" not-null="true"/>
+    </many-to-one>
+    <property name="persCode" type="string">
+      <column length="2000000000" name="pers_code" not-null="true" unique="true"/>
+    </property>
+    <property name="name" type="string">
+      <column length="2000000000" name="name" not-null="true"/>
+    </property>
+    <property name="lastName" type="string">
+      <column length="2000000000" name="last_name" not-null="true"/>
+    </property>
+    <property name="password" type="string">
+      <column length="2000000000" name="password" not-null="true"/>
+    </property>
+    <property name="mail" type="string">
+      <column length="2000000000" name="mail" not-null="true" unique="true"/>
+    </property>
+    <property name="rating" type="string">
+      <column length="2000000000" name="rating" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

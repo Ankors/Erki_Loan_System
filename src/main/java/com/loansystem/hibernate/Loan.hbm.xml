@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 13, 2011 9:49:22 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+  <class name="com.loansystem.model.Loan" table="loan">
+    <id name="id" type="string">
+      <column length="2000000000" name="id"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="dueDate" type="string">
+      <column length="2000000000" name="due_date" not-null="true"/>
+    </property>
+    <property name="baseDueDate" type="string">
+      <column length="2000000000" name="base_due_date" not-null="true"/>
+    </property>
+    <property name="apr" type="string">
+      <column length="2000000000" name="apr" not-null="true"/>
+    </property>
+    <property name="debt" type="string">
+      <column length="2000000000" name="debt" not-null="true"/>
+    </property>
+    <property name="clientId" type="int">
+      <column name="client_id" not-null="true"/>
+    </property>
+    <property name="employeeId" type="string">
+      <column length="2000000000" name="employee_id"/>
+    </property>
+    <property name="status" type="string">
+      <column length="2000000000" name="status" not-null="true"/>
+    </property>
+    <property name="offerId" type="string">
+      <column length="2000000000" name="offer_id" not-null="true"/>
+    </property>
+    <property name="postponeRequestId" type="string">
+      <column length="2000000000" name="postpone_request_id" unique="true"/>
+    </property>
+  </class>
+</hibernate-mapping>
