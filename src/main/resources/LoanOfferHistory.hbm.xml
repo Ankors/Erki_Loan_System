@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 13, 2011 9:49:22 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+  <class name="com.loansystem.model.LoanOfferHistory" table="loan_offer_history">
+    <id name="changeId" type="string">
+      <column length="2000000000" name="Change_ID"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="offerId" type="string">
+      <column length="2000000000" name="offer_id" not-null="true"/>
+    </property>
+    <property name="employeeId" type="string">
+      <column length="2000000000" name="employee_id" not-null="true"/>
+    </property>
+    <property name="comment" type="string">
+      <column length="2000000000" name="comment" not-null="true"/>
+    </property>
+    <property name="date" type="string">
+      <column length="2000000000" name="date" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

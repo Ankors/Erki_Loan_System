@@ -1,5 +1,14 @@
 package com.loansystem.UI;
 
+import com.loansystem.hibernate.HibernateUtil;
+import com.loansystem.validator.LoginValidator;
+import java.sql.*;
+import java.util.List;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.hibernate.Query;
+import org.hibernate.Session;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -15,6 +24,8 @@ package com.loansystem.UI;
  * @author antonve
  */
 public class LoginForm extends javax.swing.JFrame {
+
+    private static final Log log = LogFactory.getLog(LoginForm.class);
 
     /** Creates new form LoginForm */
     public LoginForm() {
@@ -49,6 +60,11 @@ public class LoginForm extends javax.swing.JFrame {
 
         jButton1.setText("OK");
         jButton1.setName("jButton1"); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Login");
         jLabel1.setName("jLabel1"); // NOI18N
@@ -95,10 +111,43 @@ private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 // TODO add your handling code here:
 }//GEN-LAST:event_jTextField1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
+private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        List ClientsList;
+        try {
+            log.info("START");
+            log.info("MIDDLE");
+            Session session = null;
+            /*User user = new User();
+		user.setName("apple");
+		user.setPassword("123456");
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction tx = session.beginTransaction();
+		session.save(user);
+		tx.commit();
+		session.close();
+		HibernateUtil.shutdown();*/
+            try {
+                session = HibernateUtil.getSessionFactory().openSession();
+                session.beginTransaction();
+                ClientsList = session.createQuery(
+                        "from Client as a").list();
+            } catch (Exception ex) {
+                log.error(ex);
+            } finally {
+                session.close();
+            }
+        }
+    
+    catch(Exception e)
+    {
+        log.error("jButton1ActionPerformed" + e);
+    }
+    LoginValidator loginValidator = new LoginValidator();
+}//GEN-LAST:event_jButton1ActionPerformed
+/**
+ * @param args the command line arguments
+ */
+public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -109,16 +158,32 @@ private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }
+                
+
+}
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginForm.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } 
+
+catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(LoginForm.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } 
+
+catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(LoginForm.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } 
+
+catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(LoginForm.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
