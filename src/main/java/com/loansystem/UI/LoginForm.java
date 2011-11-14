@@ -8,6 +8,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 /*
  * To change this template, choose Tools | Templates
@@ -127,7 +129,10 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 		session.close();
 		HibernateUtil.shutdown();*/
             try {
-                session = HibernateUtil.getSessionFactory().openSession();
+                
+                
+                SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+                session =sessionFactory.openSession();
                 session.beginTransaction();
                 ClientsList = session.createQuery(
                         "from Client as a").list();

@@ -4,7 +4,7 @@
 <!-- Generated Nov 13, 2011 9:49:22 PM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="com.loansystem.model.ClientHistory" table="client_history">
-        <composite-id name="id" class="ClientHistoryId">
+        <composite-id name="id" class="com.loansystem.model.ClientHistoryId">
             <key-property name="date" type="string">
                 <column name="date" length="2000000000" />
             </key-property>

@@ -3,7 +3,7 @@
 <!-- Generated Nov 13, 2011 9:49:22 PM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
   <class name="com.loansystem.model.LoanHistory" table="loan_history">
-    <composite-id class="LoanHistoryId" name="id">
+    <composite-id class="com.loansystem.model.LoanHistoryId" name="id">
       <key-property name="date" type="string">
         <column length="2000000000" name="date"/>
       </key-property>
