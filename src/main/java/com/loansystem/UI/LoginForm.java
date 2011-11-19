@@ -137,12 +137,11 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
             session = sessionFactory.openSession();
             session.beginTransaction();
-            clientsList = (ArrayList<Client>) session.createQuery("from Client as a").list();
+            clientsList = (ArrayList<Client>) session.createCriteria(Client.class).list();
             Iterator it = clientsList.iterator();
             while(it.hasNext())
             {
-                log.info(it.next());
-           
+                log.info("SOME LOG");
             }
         } catch (Exception ex) {
             log.error(ex);
@@ -181,7 +180,7 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>gfggggg
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
